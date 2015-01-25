@@ -11,6 +11,12 @@ body {
   font-family: arial;
 }
 
+
+.home, .start, .addContact, .report {
+  padding: 2rem 5rem;
+  h1 { text-align: center; margin-bottom: 1rem; }
+}
+
 h1 {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
@@ -95,7 +101,6 @@ footer {
 }
 
 .report {
-  padding: 5rem;
   h2 {
     font-size: 2.2rem;
   }
@@ -112,6 +117,7 @@ footer {
   }
   .mutual {
     font-size: 1.65rem;
+    margin-left: 1.5rem;
     li {
       font-size: 1.5rem;
       margin: 0.2rem 0.5rem;
@@ -154,10 +160,6 @@ footer {
   }
 }
 
-.home, .start, .addContact {
-  padding: 5rem;
-  h1 { text-align: center; }
-}
 .addContact {
   .success,.error {
     padding: 1rem;
