@@ -76,7 +76,8 @@ module.exports = function(grunt) {
         options: {
           basePath: "<%= path.src %>/",
           config: "<%= path.src %>/config.rb",
-          environment: "production"
+          environment: "production",
+          force: true
         }
       },
       dev: {
