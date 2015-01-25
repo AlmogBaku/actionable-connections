@@ -1,0 +1,25 @@
+<div class="connection-card f{{connection.flag}}">
+    <img src="{{connection.pictureUrl}}" />
+    <div class="info">
+        <h1>{{connection.firstName}} {{connection.lastName}}</h1>
+        <h2>{{connection.headline}}</h2>
+        <h3>{{connection.industry}}</h3>
+        <a href="{{connection.url}}" target="_blank" ng-if="connection.url">LinkedIn profile</a>
+    </div>
+
+    <div class="flag">
+        {{connection.flag}}
+    </div>
+</div>
+<footer>
+    <div class="status">
+        <a ui-sref="connection({idx: connection.idx-1})" ng-if="connection.idx!==0">Back</a>
+        {{connection.idx+1}} out of {{last+1}}
+        <a ui-sref="connection({idx: connection.idx+1})" ng-if="connection.idx!==last">Next</a>
+        <a ui-sref="finish()" ng-if="connection.idx===last">Finish</a>
+    </div>
+
+    <div>
+        Press <span class="cfp-hotkeys-key">?</span> for help
+    </div>
+</footer>

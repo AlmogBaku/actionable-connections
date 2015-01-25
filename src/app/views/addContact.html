@@ -1,0 +1,25 @@
+<div class="addContact">
+    <h1>Add contact that not on your LinkedIn connections:</h1>
+    <form>
+        <div class="error" ng-show="error">
+            <strong>Error:</strong>
+            {{error}}
+        </div>
+        <div class="success" ng-show="success">
+            Added successfully!
+        </div>
+        <label for="connUrl">
+            Enter the <strong>PUBLIC</strong> LinkedIn url of the connection:
+        </label>
+        <input type="url" id="connUrl" ng-model="connUrl" placeholder="LinkedIn PUBLIC url" />
+        <button ng-click="add()">Add</button>
+    </form>
+</div>
+<footer>
+    <div>
+        Go back to the <button ui-sref="report()"><i>R</i>eport</button>.
+    </div>
+    <div>
+        Press <span class="cfp-hotkeys-key">?</span> for help
+    </div>
+</footer>
