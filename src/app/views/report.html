@@ -1,9 +1,11 @@
 <div class="report">
-    <h1>Wooha~! that's your report:</h1>
+    <h1>Wooha~! Your report is ready:</h1>
     <div class="f-2" ng-if="connections[2].length">
         <h2>You probably should speak with this bros, it seems they can help you a lot!</h2>
         <ul>
-            <li ng-repeat="conn in connections[2]">{{conn.firstName}} {{conn.lastName}}</li>
+            <li ng-repeat="conn in connections[2]">
+                <a href="{{conn.url}}" target="_blank">{{conn.firstName}} {{conn.lastName}}</a>
+            </li>
         </ul>
     </div>
 
@@ -11,7 +13,7 @@
         <h2>You need to get intros with:</h2>
         <ul>
             <li ng-repeat="conn in connections.n">
-                {{conn.firstName}} {{conn.lastName}}
+                <a href="{{conn.url}}" target="_blank">{{conn.firstName}} {{conn.lastName}}</a>
                 <div ng-if="conn.mutual.length" ng-init="show=false" class="mutual">
                     Mutual connections
                     <button ng-click="show=!show">
@@ -20,7 +22,7 @@
                     </button>
                     <ul ng-show="show">
                         <li ng-repeat="m in conn.mutual" class="mf-{{m.flag()}}">
-                            {{m.firstName}} {{m.lastName}}
+                            <a href="{{m.url}}" target="_blank">{{m.firstName}} {{m.lastName}}</a>
                             <span class="flag">
                                 <input type="text" maxlength="1" ng-model="m.flag" ng-model-options="{ getterSetter: true }" ng-pattern="/^[012n]$/" ng-change="flagChanged(m.flag())" />
                             </span>
@@ -34,7 +36,9 @@
     <div class="f-1" ng-if="connections[1].length">
         <h2>You may assist this friends for intros:</h2>
         <ul>
-            <li ng-repeat="conn in connections[1]">{{conn.firstName}} {{conn.lastName}}</li>
+            <li ng-repeat="conn in connections[1]">
+                <a href="{{conn.url}}" target="_blank">{{conn.firstName}} {{conn.lastName}}</a>
+            </li>
         </ul>
     </div>
 </div>

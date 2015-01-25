@@ -24,9 +24,7 @@ angular.module('app')
     $scope.loadReport();
 
     $scope.flagChanged = function(flag) {
-      if(flag==='n') {
-        $scope.loadReport();
-      }
+      $scope.loadReport();
     };
 
     $scope.exportCSV = function() {

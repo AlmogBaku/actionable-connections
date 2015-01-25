@@ -107,11 +107,18 @@ footer {
     list-style-type: decimal;
     li {
       margin: 1rem;
-      font-size: 2rem;
-      li {
-        font-size: 1.8rem;
-      }
+      font-size: 1.8rem;
     }
+  }
+  .mutual {
+    font-size: 1.65rem;
+    li {
+      font-size: 1.5rem;
+      margin: 0.2rem 0.5rem;
+    }
+  }
+  a {
+    color: #132496;
   }
 
   span.flag {
@@ -136,7 +143,7 @@ footer {
   .mf-n {
     background: #a6ff8d;
   }
-  .mf-x {
+  .mf-0 {
     background: #b9b9b9;
   }
   .mf-1 {
