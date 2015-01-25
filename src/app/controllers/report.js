@@ -16,9 +16,19 @@ angular.module('app')
       return;
     }
 
-    $linkedin.getGroupedConnections().then(function(connections) {
-      $scope.connections = connections;
-    });
+    $scope.loadReport = function() {
+      $linkedin.getGroupedConnections().then(function(connections) {
+        $scope.connections = connections;
+      });
+    };
+    $scope.loadReport();
+
+    $scope.flagChanged = function(flag) {
+      if(flag==='n') {
+        $scope.loadReport();
+      }
+    };
+
     $scope.exportCSV = function() {
       $linkedin.toObject().then(function(obj) {
         exportCSV(obj, 'connections', true);
@@ -43,9 +53,14 @@ angular.module('app')
           }
         })
         .add({
+          combo: 'r',
+          description: 'Reload report',
+          callback: $scope.loadReport
+        })
+        .add({
           combo: 'e',
           description: 'Export',
-          callback: $scope.exportTbl
+          callback: $scope.exportCSV
         })
       ;
     }

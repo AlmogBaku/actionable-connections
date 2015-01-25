@@ -19,9 +19,11 @@
                         <span ng-show="!show">+</span>
                     </button>
                     <ul ng-show="show">
-                        <li ng-repeat="m in conn.mutual" class="mf-{{m.flag}}">
+                        <li ng-repeat="m in conn.mutual" class="mf-{{m.flag()}}">
                             {{m.firstName}} {{m.lastName}}
-                            <span class="flag">{{m.flag}}</span>
+                            <span class="flag">
+                                <input type="text" maxlength="1" ng-model="m.flag" ng-model-options="{ getterSetter: true }" ng-pattern="/^[012n]$/" ng-change="flagChanged(m.flag())" />
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -40,6 +42,7 @@
     <div>
         <button ui-sref="addContact()"><i>A</i>dd connection manually</button>
         <button ng-click="exportCSV()"><i>E</i>xport data to csv</button>
+        <button ng-click="loadReport()"><i>R</i>eload report</button>
     </div>
     <div>
         Press <span class="cfp-hotkeys-key">?</span> for help

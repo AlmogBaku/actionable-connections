@@ -22,7 +22,7 @@ angular.module('app')
 
     function flag(e, hotkey) {
       var flag = hotkey.combo[0];
-      $scope.connection.setFlag(flag);
+      $scope.connection.flag(flag);
       next();
     }
     function next() {

@@ -70,10 +70,11 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
   }
   function addConnection(user) {
     user.idx = connectionsArr.length;
-    user.flag = undefined;
     user.getMutualConnections = getMutualConnections;
-    user.setFlag = function(flag) {
-      this.flag = flag;
+    user.flag = function(flag) {
+      if(flag===undefined) return this._flag;
+
+      this._flag = flag;
       if(flag==='n') {
         this.getMutualConnections();
       }
@@ -139,7 +140,7 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
   };
   this.getFirstNotFlagged = function() {
     for(var i=0;i<connectionsArr.length;i++) {
-      if(connectionsArr[i].flag===undefined) return connectionsArr[i];
+      if(connectionsArr[i].flag()===undefined) return connectionsArr[i];
     }
     return false;
   };
@@ -153,7 +154,7 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
     IN.API.Raw("/people/url="+encodeURIComponent(url)+":("+profile_req_fields.join(",")+")")
       .result(function(data){
         var conn = addConnection(data);
-        conn.setFlag(flag);
+        conn.flag(flag);
         defer.resolve(conn);
       })
       .error(function(err) {
@@ -191,7 +192,7 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
       for(var i=0; i<connectionsArr.length; i++) {
         conn = connectionsArr[i];
 
-        switch(conn.flag) {
+        switch(conn.flag()) {
           case '0': groupedConnections['0'].push(conn); break;
           case 'n': groupedConnections['n'].push(conn); break;
           case '1': groupedConnections[1].push(conn); break;
@@ -201,11 +202,13 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
       }
       for(i=0; i<groupedConnections['n'].length; i++) {
         conn = groupedConnections['n'][i];
-        conn.mutual = conn.mutual.sort(function(a,b) {
-          a=flag2numberorder(a.flag);
-          b=flag2numberorder(b.flag);
-          return b-a;
-        });
+        if(conn.mutual) {
+          conn.mutual = conn.mutual.sort(function(a,b) {
+            a=flag2numberorder(a.flag());
+            b=flag2numberorder(b.flag());
+            return b-a;
+          });
+        }
       }
       defer.resolve(groupedConnections);
     });
@@ -222,7 +225,7 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
         conn = connectionsArr[i];
 
         obj.push({
-          'Flag': (conn.flag === undefined) ? '' : conn.flag,
+          'Flag': (conn.flag() === undefined) ? '' : conn.flag(),
           'First name': conn.firstName,
           'Last name': conn.lastName,
           'Headline': conn.headline,

@@ -1,4 +1,4 @@
-<div class="connection-card f{{connection.flag}}">
+<div class="connection-card f{{connection.flag()}}">
     <img src="{{connection.pictureUrl}}" />
     <div class="info">
         <h1>{{connection.firstName}} {{connection.lastName}}</h1>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="flag">
-        {{connection.flag}}
+        {{connection.flag()}}
     </div>
 </div>
 <footer>

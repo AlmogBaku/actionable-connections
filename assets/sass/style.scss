@@ -119,7 +119,19 @@ footer {
     width: 2rem;
     height: 2rem;
     border: 2px solid;
-    text-align: center;
+    overflow: hidden;
+    margin-left: 2rem;
+    input {
+      background: transparent;
+      border: 0;
+      width: 2rem;
+      height: 2rem;
+      text-align: center;
+      font-size: 1.8rem;
+      &.ng-invalid {
+        background: #ff978e;
+      }
+    }
   }
   .mf-n {
     background: #a6ff8d;
