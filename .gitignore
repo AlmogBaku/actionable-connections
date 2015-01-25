@@ -1,7 +1,6 @@
 .idea
 .sass-cache
 node_modules
-dist
 /assets/css/
 dev.html
 index.html
