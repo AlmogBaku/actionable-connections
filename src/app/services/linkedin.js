@@ -97,7 +97,9 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
       IN.API.Connections("me")
         .fields(profile_req_fields)
         .result(function (data) {
-          var values = data.values;
+          var values = data.values.filter(function(user) {
+            return user.id !== 'private';
+          });
           for (var i = 0; i < values.length; i++) {
             addConnection(values[i]);
           }
