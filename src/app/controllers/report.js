@@ -10,7 +10,7 @@
 
 
 angular.module('app')
-  .controller('reportCtrl', function($scope, $linkedin, $state, $rootScope, hotkeys, exportCSV) {
+  .controller('reportCtrl', function($scope, $linkedin, $state, $rootScope, hotkeys, exportCSV, $analytics) {
     if(!$rootScope.loggedIn){
       $state.go('home');
       return;
@@ -28,6 +28,7 @@ angular.module('app')
     };
 
     $scope.exportCSV = function() {
+      $analytics.eventTrack('export');
       $linkedin.toObject().then(function(obj) {
         exportCSV(obj, 'connections', true);
       });

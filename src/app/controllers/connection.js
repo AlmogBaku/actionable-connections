@@ -10,11 +10,13 @@
 
 
 angular.module('app')
-  .controller('connectionCtrl', function($scope, $linkedin, $state, $rootScope, $stateParams, hotkeys) {
+  .controller('connectionCtrl', function($scope, $linkedin, $state, $rootScope, $stateParams, hotkeys, $analytics) {
     if(!$rootScope.loggedIn){
       $state.go('home');
       return;
     }
+
+    $analytics.pageTrack('/connection');
 
     $scope.connection = $linkedin.getConnectionByIdx($stateParams.idx);
     $scope.last = $linkedin.getLastConnectionIdx();
@@ -23,6 +25,7 @@ angular.module('app')
     function flag(e, hotkey) {
       var flag = hotkey.combo[0];
       $scope.connection.flag(flag);
+      $analytics.eventTrack('flag', { flag: flag });
       next();
     }
     function next() {
