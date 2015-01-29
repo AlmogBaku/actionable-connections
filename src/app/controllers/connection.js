@@ -10,7 +10,7 @@
 
 
 angular.module('app')
-  .controller('connectionCtrl', function($scope, $linkedin, $state, $rootScope, $stateParams, hotkeys) {
+  .controller('connectionCtrl', function($scope, $linkedin, $state, $rootScope, $stateParams, hotkeys, $analytics) {
     if(!$rootScope.loggedIn){
       $state.go('home');
       return;
@@ -23,6 +23,7 @@ angular.module('app')
     function flag(e, hotkey) {
       var flag = hotkey.combo[0];
       $scope.connection.flag(flag);
+      $analytics.eventTrack('flag');
       next();
     }
     function next() {

@@ -4,7 +4,9 @@ try { angular.module('app.templates'); } catch(e) { angular.module('app.template
 
 angular.module('app', [
   'ui.router',
-  'cfp.hotkeys'
+  'cfp.hotkeys',
+  'angulartics',
+  'angulartics.google.analytics'
 ])
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
