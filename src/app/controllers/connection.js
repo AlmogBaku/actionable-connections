@@ -16,6 +16,8 @@ angular.module('app')
       return;
     }
 
+    $analytics.pageTrack('/connection');
+
     $scope.connection = $linkedin.getConnectionByIdx($stateParams.idx);
     $scope.last = $linkedin.getLastConnectionIdx();
 
