@@ -23,7 +23,7 @@ angular.module('app')
     function flag(e, hotkey) {
       var flag = hotkey.combo[0];
       $scope.connection.flag(flag);
-      $analytics.eventTrack('flag');
+      $analytics.eventTrack('flag', { flag: flag });
       next();
     }
     function next() {
