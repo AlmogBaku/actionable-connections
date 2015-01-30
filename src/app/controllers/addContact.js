@@ -10,12 +10,7 @@
 
 
 angular.module('app')
-  .controller('addContactCtrl', function($scope, $linkedin, $state, $rootScope, hotkeys, $timeout) {
-    if(!$rootScope.loggedIn){
-      $state.go('home');
-      return;
-    }
-
+  .controller('addContactCtrl', function($scope, $linkedin, $state, hotkeys, $timeout) {
     $scope.error=false;
     $scope.success = false;
     $scope.add = function() {

@@ -10,12 +10,7 @@
 
 
 angular.module('app')
-  .controller('startCtrl', function($scope, $linkedin, $state, $rootScope, hotkeys) {
-    if(!$rootScope.loggedIn){
-      $state.go('home');
-      return;
-    }
-
+  .controller('startCtrl', function($scope, $linkedin, $state, hotkeys) {
     $linkedin.getMe().then(function(me) {
       $scope.user = me;
     });
@@ -23,6 +18,8 @@ angular.module('app')
     $scope.ready=false;
     $linkedin.getConnections().then(function() {
       $scope.ready=true;
+    }).catch(function() {
+      $scope.error=true;
     });
 
     hotkeys.bindTo($scope)

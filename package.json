@@ -19,6 +19,7 @@
     "grunt-ng-annotate": "~0.9.2",
     "grunt-html-build": "~0.3.2",
     "angular-hotkeys": "~1.4.5",
-    "angulartics": "~0.17.2"
+    "angulartics": "~0.17.2",
+    "ngauth": "0.0.8"
   }
 }
