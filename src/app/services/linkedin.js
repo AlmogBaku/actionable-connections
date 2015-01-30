@@ -18,8 +18,21 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
   this.getSDK = function() {
     return IN;
   };
+
+  /**
+   * get Status
+   * @returns null-abstain|true-logged in|false-logged out
+   */
   this.getStatus = function() {
+    if(IN===null) return null;
     return IN.User.isAuthorized();
+  };
+
+  this.login = function() {
+    return IN.User.authorize();
+  };
+  this.logout = function() {
+    return IN.User.logout();
   };
 
   this.getMe = function() {
@@ -132,9 +145,11 @@ angular.module('app').service("$linkedin", function($rootScope, $q) {
   };
 
   this.getConnectionByID = function(id) {
+    if(connectionsArr.length<1) this.getConnections();
     return connections[id];
   };
   this.getConnectionByIdx = function(idx) {
+    if(connectionsArr.length<1) this.getConnectionsArr();
     return connectionsArr[idx];
   };
   this.getLastConnectionIdx = function() {

@@ -10,12 +10,7 @@
 
 
 angular.module('app')
-  .controller('reportCtrl', function($scope, $linkedin, $state, $rootScope, hotkeys, exportCSV, $analytics) {
-    if(!$rootScope.loggedIn){
-      $state.go('home');
-      return;
-    }
-
+  .controller('reportCtrl', function($scope, $linkedin, $state, hotkeys, exportCSV, $analytics) {
     $scope.loadReport = function() {
       $linkedin.getGroupedConnections().then(function(connections) {
         $scope.connections = connections;

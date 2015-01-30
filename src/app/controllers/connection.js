@@ -10,12 +10,7 @@
 
 
 angular.module('app')
-  .controller('connectionCtrl', function($scope, $linkedin, $state, $rootScope, $stateParams, hotkeys, $analytics) {
-    if(!$rootScope.loggedIn){
-      $state.go('home');
-      return;
-    }
-
+  .controller('connectionCtrl', function($scope, $linkedin, $state, $stateParams, hotkeys, $analytics) {
     $analytics.pageTrack('/connection');
 
     $scope.connection = $linkedin.getConnectionByIdx($stateParams.idx);

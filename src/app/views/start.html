@@ -3,8 +3,11 @@
     <div class="welcome" ng-if="user">
         Hey {{user.firstName}} {{user.lastName}}!
     </div>
-    <div class="ready" ng-show="!ready">
+    <div class="ready" ng-show="!ready && !error">
         Please wait while we loading your connections........
+    </div>
+    <div class="error" ng-show="!ready && error">
+        It seems that there is an internal error within the LinkedIn API :( Please try again later.
     </div>
     <div class="ready" ng-show="ready">
         Are you ready to go? <button ui-sref="connection({idx:0})"><i>S</i>tart!</button>

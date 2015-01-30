@@ -11,6 +11,7 @@ module.exports = function(grunt) {
   var files = {
     vendor: [
       "<%= path.src %>/node_modules/angular/angular.js",
+      "<%= path.src %>/node_modules/ngauth/AuthBaseUI.js",
       "<%= path.src %>/node_modules/angular-ui-router/release/angular-ui-router.js",
       "<%= path.src %>/node_modules/angular-hotkeys/build/hotkeys.js",
       "<%= path.src %>/node_modules/angulartics/src/angulartics.js",
