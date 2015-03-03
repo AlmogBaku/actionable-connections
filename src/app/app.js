@@ -12,6 +12,7 @@ angular.module('app', [
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
+        anonymous: true,
         url: "/",
         templateUrl: "src/app/views/home.html"
       })
